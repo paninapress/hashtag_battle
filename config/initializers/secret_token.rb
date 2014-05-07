@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Hashtagbattle::Application.config.secret_key_base = 'ada63ad067db97d5534a59bb712bcfdc96e2da560fb9068c7bbb0d76dcb622dcf944a739da6ee8586640d05f918ed10ecc29f22146987533ede08bc01a6026e7'
+Hashtagbattle::Application.config.secret_key_base = ENV['SECRET_KEY_BASE']
