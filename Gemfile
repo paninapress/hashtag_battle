@@ -32,7 +32,13 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'dotenv-rails'
+# for .env secrets
+gem 'dotenv-rails', :groups => [:development, :test]
+
+# for Heroku
+gem 'rails_12factor', group: :production
+
+ruby "2.1.0"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
