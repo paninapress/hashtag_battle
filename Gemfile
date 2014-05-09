@@ -38,6 +38,8 @@ gem 'dotenv-rails', :groups => [:development, :test]
 # for Heroku
 gem 'rails_12factor', group: :production
 
+gem 'twitter', '~> 5.8.0'
+
 ruby "2.1.0"
 
 # Use ActiveModel has_secure_password
