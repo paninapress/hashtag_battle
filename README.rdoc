@@ -1,5 +1,6 @@
 =Hashtag Battle
 Battle 2 or more hashtags to see which one gets you more reach!
+**View it here: http://hashtagchallenge.herokuapp.com (not currently up to date as it's still a work in progress)
 * Sign in with Twitter
 * Pick hashtag keywords you want to track
 * Set the length of time you want to track them for
