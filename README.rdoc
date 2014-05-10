@@ -1,28 +1,14 @@
-== README
+=Hashtag Battle
+Battle 2 or more hashtags to see which one gets you more reach!
+* Sign in with Twitter
+* Pick hashtag keywords you want to track
+* Set the length of time you want to track them for
+* Every few minutes you'll see it update!***
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+***Uses a custom rake task and scheduler so your results will be continually updated.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Potential additional features
+* Find out who your top fans are with who tweets you the most
+* Find out how much of your hashtag traffic is coming from fans vs bots
+* Ability to tweet your results page
+* Ability to do giveaways with this app as it'll be able to track users and enter them into an entry pool each time they tweet specific hashtags and will randomly generate your winners
