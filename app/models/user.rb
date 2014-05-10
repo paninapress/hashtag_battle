@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :hashtagchallenges
+  
   def self.from_omniauth(auth)
     user = where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
     user.oauth_access_token = auth["extra"]["access_token"].token
