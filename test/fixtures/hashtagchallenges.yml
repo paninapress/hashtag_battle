@@ -1,13 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  hashtags: MyText
-  counts: MyText
-  since_id: 1
   end_date: 2014-05-09
+  hashtag1: MyString
+  hashtag2: MyString
+  count1: 1
+  count2: 1
+  ht1_since_id: 1
+  ht2_since_id: 1
 
 two:
-  hashtags: MyText
-  counts: MyText
-  since_id: 1
   end_date: 2014-05-09
+  hashtag1: MyString
+  hashtag2: MyString
+  count1: 1
+  count2: 1
+  ht1_since_id: 1
+  ht2_since_id: 1

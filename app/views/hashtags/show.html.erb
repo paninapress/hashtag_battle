@@ -1,0 +1,4 @@
+<% @hashtagchallenge.each do |info| %>
+  <h3>#<%= info.hashtag1 %> VS #<%= info.hashtag2 %></h3>
+  <h4>score: <%= info.count1 %> score: <%= info.count2 %></h4>
+<% end %>
