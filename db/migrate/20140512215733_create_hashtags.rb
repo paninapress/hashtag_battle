@@ -4,7 +4,7 @@ class CreateHashtags < ActiveRecord::Migration
       t.string :name
       t.integer :count, :default => 0
       t.string :since_id
-      t.integer :challenge_id
+      t.references :challenge
 
       t.timestamps
     end
