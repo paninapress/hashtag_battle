@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :hashtagchallenges
+  has_many :challenges
   
   def self.from_omniauth(auth)
     user = where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)

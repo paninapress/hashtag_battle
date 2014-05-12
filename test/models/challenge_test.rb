@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class HashtagchallengeTest < ActiveSupport::TestCase
+class ChallengeTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

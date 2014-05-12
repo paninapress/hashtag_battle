@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  count: 1
+  since_id: MyString
+  end_date: 2014-05-12
+
+two:
+  name: MyString
+  count: 1
+  since_id: MyString
+  end_date: 2014-05-12

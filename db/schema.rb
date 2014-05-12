@@ -11,25 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140510041927) do
+ActiveRecord::Schema.define(version: 20140512220914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "hashtagchallenges", force: true do |t|
+  create_table "challenges", force: true do |t|
     t.date     "end_date"
-    t.string   "hashtag1"
-    t.string   "hashtag2"
-    t.integer  "count1",       default: 0
-    t.integer  "count2",       default: 0
-    t.string   "ht1_since_id"
-    t.string   "ht2_since_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
   end
 
-  add_index "hashtagchallenges", ["user_id"], name: "index_hashtagchallenges_on_user_id", using: :btree
+  add_index "challenges", ["user_id"], name: "index_challenges_on_user_id", using: :btree
+
+  create_table "hashtags", force: true do |t|
+    t.string   "name"
+    t.integer  "count",        default: 0
+    t.string   "since_id"
+    t.integer  "challenge_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "provider"
