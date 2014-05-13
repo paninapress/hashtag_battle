@@ -2,8 +2,19 @@
 
 <% @challenges.each do |challenge| %>
   Started: <%= challenge.created_at %> Ends: <%= challenge.end_date %>
-  <% challenge.hashtags.each do |hashtag| %>
-    <h3>#<%= hashtag.name %></h3>
-    <h4>score: <%= hashtag.count %></h4>
-  <% end %>
+  <table>
+    <tr>
+      <th>Hashtag #1 vs</th>
+      <th>Hashtag #2</th>
+    </tr>
+    <tr>
+      <td>#<%= challenge.hashtags[0].name %></td>
+      <td>#<%= challenge.hashtags[1].name %></td>
+    </tr>
+    <tr>
+      <td>score: <%= challenge.hashtags[0].count %></td>
+      <td>score: <%= challenge.hashtags[1].count %></td>
+    </tr>
+  </table>
+  <br/>
 <% end %>
