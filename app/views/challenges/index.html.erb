@@ -1,2 +1,9 @@
 <h1>Challenges#index</h1>
-<p>Find me in app/views/challenges/index.html.erb</p>
+
+<% @challenges.each do |challenge| %>
+  Started: <%= challenge.created_at %> Ends: <%= challenge.end_date %>
+  <% challenge.hashtags.each do |hashtag| %>
+    <h3>#<%= hashtag.name %></h3>
+    <h4>score: <%= hashtag.count %></h4>
+  <% end %>
+<% end %>
