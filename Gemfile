@@ -32,8 +32,12 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# for .env secrets
-gem 'dotenv-rails', :groups => [:development, :test]
+# For development
+group :development, :test do
+  gem 'pry', '~> 0.9.12.6'
+  # for .env secrets
+  gem 'dotenv-rails'
+end
 
 # for Heroku
 gem 'rails_12factor', group: :production
