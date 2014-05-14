@@ -1,7 +1,7 @@
 <h1>Challenges#index</h1>
 
 <% @challenges.each do |challenge| %>
-  Started: <%= challenge.created_at %> Ends: <%= challenge.end_date %>
+  Started: <%= Date.parse(challenge.created_at.to_s) %> Ends: <%= challenge.end_date %>
   <table>
     <tr>
       <th>Hashtag #1 vs</th>
@@ -14,6 +14,10 @@
     <tr>
       <td>score: <%= challenge.hashtags[0].count %></td>
       <td>score: <%= challenge.hashtags[1].count %></td>
+    </tr>
+    <tr>
+      <td>last updated: <%= challenge.hashtags[0].updated_at %></td>
+      <td>last updated: <%= challenge.hashtags[1].updated_at %></td>
     </tr>
   </table>
   <br/>
