@@ -7,31 +7,43 @@ task :updateHashtagCounts => :environment do
       consumer_secret: ENV["TWITTER_CONSUMER_SECRET"], 
       access_token: user[:oauth_access_token], 
       access_token_secret: user[:oauth_access_secret])
+    max_attempts = 3
+    num_attempts = 0
+    puts num_attempts
 
-    def count_nextpage_tweets(hashtag, max_id)
-      next_results = @client.search("##{hashtag.name}", {result_type:"recent", max_id: max_id, since_id: hashtag.since_id.to_i}).attrs
-      new_count = hashtag.count + next_results[:statuses].length
-      hashtag.update_attributes(count: new_count)
-      puts "next page: " + hashtag.count.to_s
-      puts "amount: " + next_results[:statuses].length.to_s
-      if !next_results[:search_metadata][:next_results].nil?
-        max_id = next_results[:search_metadata][:next_results].split("max_id=")[1].split("&")[0].to_i
-        count_nextpage_tweets(hashtag, max_id)
+    def count_nextpage_tweets(hashtag, max_id, num_attempts, max_attempts)
+  
+      puts "Max attempt IS " + max_attempts.to_s
+      num_attempts += 1
+      puts num_attempts
+      if num_attempts >= max_attempts
+      else
+        next_results = @client.search("##{hashtag.name}", {result_type:"recent", max_id: max_id, since_id: hashtag.since_id.to_i}).attrs
+        new_count = hashtag.count + next_results[:statuses].length
+        hashtag.update_attributes(count: new_count)
+        puts "next page count at: " + hashtag.count.to_s
+        puts "increased by: " + next_results[:statuses].length.to_s
+        if !next_results[:search_metadata][:next_results].nil?
+          max_id = next_results[:search_metadata][:next_results].split("max_id=")[1].split("&")[0].to_i
+          count_nextpage_tweets(hashtag, max_id, num_attempts, max_attempts)
+        end
       end
     end
 
     if hashtag.challenge.end_date - Date.today > 0 # only process current challenges
+      num_attempts += 1
+      puts num_attempts
       results = @client.search("##{hashtag.name}", {result_type:"recent", until: hashtag.challenge.end_date, since_id: hashtag.since_id.to_i}).attrs
       
       # Step 1: count the first page's statuses
       new_count = hashtag.count + results[:statuses].length
-      hashtag.update_attributes(count: new_count)
       puts hashtag.count.to_s + " count is now " + new_count.to_s
+      hashtag.update_attributes(count: new_count)
 
       # Step 2: count statuses on additional pages of results
       if !results[:search_metadata][:next_results].nil?
         max_id = results[:search_metadata][:next_results].split("max_id=")[1].split("&")[0].to_i
-        count_nextpage_tweets(hashtag, max_id)
+        count_nextpage_tweets(hashtag, max_id, num_attempts, max_attempts)
       end
 
       # Step 3: update the since_id
