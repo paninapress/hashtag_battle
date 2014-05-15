@@ -1,6 +1,7 @@
 class ChallengesController < ApplicationController
   def index
     @challenges = Challenge.where(:user_id => current_user)
+    @current_time = Time.parse(Time.now.to_s).utc
   end
   def create
     # set both initial since_ids with most recent tweets's max_id
