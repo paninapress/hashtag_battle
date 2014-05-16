@@ -7,7 +7,11 @@ task :updateHashtagCounts => :environment do
       consumer_secret: ENV["TWITTER_CONSUMER_SECRET"], 
       access_token: user[:oauth_access_token], 
       access_token_secret: user[:oauth_access_secret])
-    max_attempts = 3
+    # calculate the max_attempts to query per user
+    # by dividing 90 by the total number of hashtags to be processed
+    num_hashtags = user.challenges.length * 2
+    max_attempts_total = 90 # per 10 mins
+    max_attempts = max_attempts_total / num_hashtags
     num_attempts = 0
     puts num_attempts
 
